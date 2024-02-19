@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         velocity += jumpPow;
     }
     public void rotation()
-
     {
         if (_input.sqrMagnitude == 0) return;
         var targetAngle = Mathf.Atan2(_direction.x,_direction.z) * Mathf.Rad2Deg; //returns the value in degrees
@@ -67,5 +66,6 @@ public class PlayerMovement : MonoBehaviour
         _direction.y = velocity;
     }
     private bool IsGrounded() => _cc.isGrounded;
+
 }
 

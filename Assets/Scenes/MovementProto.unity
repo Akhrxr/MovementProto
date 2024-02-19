@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1902836030}
   m_Layer: 8
   m_Name: Room
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -884,10 +884,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1237660310014361211, guid: fca6b5f68c77f39419af85889cb7ae00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4114198566287231944, guid: fca6b5f68c77f39419af85889cb7ae00, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67c40689db4f867469ac41ef4b0444bb, type: 2}
+    - target: {fileID: 4929797187962050546, guid: fca6b5f68c77f39419af85889cb7ae00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7897362564642826467, guid: fca6b5f68c77f39419af85889cb7ae00, type: 3}
       propertyPath: coinTxt
       value: 
@@ -900,7 +908,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7218863520987102397, guid: fca6b5f68c77f39419af85889cb7ae00, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
