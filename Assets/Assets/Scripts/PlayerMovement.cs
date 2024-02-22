@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         ApplyGrav();
         rotation();
-        ApplyMove();
+        //ApplyMove();
     }
     private void Awake()
     {
