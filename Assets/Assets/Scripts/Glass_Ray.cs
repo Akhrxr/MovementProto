@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Glass_Ray : MonoBehaviour
 {
-    [SerializeField] private float raycastRange = 5;
+    [SerializeField] private float raycastRange = 10;
     [SerializeField] private bool isActive = false; //If active, fire light source
     [SerializeField] private GameObject lightRay;
     //[SerializeField] private bool isHitByLight = false;
