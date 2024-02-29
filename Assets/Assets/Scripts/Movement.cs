@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {   
-    Rigidbody myRB;
     private float curVelocity;
     private float mySpeed = 20f;
-    bool IsGrounded = false;
+    //bool IsGrounded = true;
     float rot = 0f;
-
-    private void OnTriggerEnter(Collider other) 
+    float r;
+    /*private void OnTriggerEnter(Collider other) 
     {
         if (other.transform.tag == "Floor")
         {
@@ -23,10 +22,10 @@ public class Movement : MonoBehaviour
         {
             IsGrounded = false;
         }
-    }
-    public void playerMovement()
+    }*/
+    public void playerMovement(Rigidbody myRB)
     {
-        myRB = GetComponent<Rigidbody>();
+        Debug.Log(IsGrounded());
     //Rotation
         rotation();
     //Movement
@@ -38,12 +37,12 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            if (IsGrounded)
+            if (IsGrounded())
             {
                 myRB.velocity = new Vector3(0, myRB.velocity.y, 0);
             }
         }
-        if (IsGrounded)
+        /*if (IsGrounded())
         {
                 if (Input.GetAxis("Jump") > 0) 
                 {
@@ -60,19 +59,28 @@ public class Movement : MonoBehaviour
             {
                 myRB.AddRelativeForce(Vector3.down *10 * mySpeed * Time.deltaTime, ForceMode.VelocityChange);
             }
-        }
+        }*/
     }
     
     public void rotation()
-    {
-        if (Input.GetAxis("Horizontal") == 0) return;
-
+    {   
         if (Input.GetAxis("Horizontal") > 0) {
             rot += 0.7f;
         }
         else if (Input.GetAxis("Horizontal") < 0) {
             rot += -0.7f;
         }
-        transform.rotation = Quaternion.Euler(0.0f, rot, 0.0f);
+        float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rot, ref r, 0.1f);
+        transform.rotation = Quaternion.Euler(0, Angle, 0);
+    }
+
+    public bool IsGrounded()
+    {
+        if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitinfo, 2f)) {
+            if (hitinfo.collider.gameObject.transform.tag == "Floor") {
+                return true;
+            }
+        }
+        return false;
     }
 }
