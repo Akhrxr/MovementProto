@@ -33,7 +33,7 @@ public class PickUp: MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && carry == null)
         {
-            PickUp();
+            PickUpF();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && carry != null)
         {
@@ -41,7 +41,7 @@ public class PickUp: MonoBehaviour
         }
     }
 
-    void PickUp()
+    void PickUpF()
     {
         RaycastHit hit;
         if(Physics.Raycast(transform.position, transform.forward, out hit, 3f))
