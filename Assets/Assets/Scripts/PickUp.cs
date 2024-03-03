@@ -15,20 +15,20 @@ public class PickUp: MonoBehaviour
     {
         rb = GetComponent<Rigidbody>(); // Get the reference to the Rigidbody component attached to this GameObject
     }
+    /*
+    void FixedUpdate()
+    {
+         // Input from arrow keys or WASD
+         float moveHorizontal = Input.GetAxis("Horizontal");
+         float moveVertical = Input.GetAxis("Vertical");
 
-    // void FixedUpdate()
-    // {
-    //     // Input from arrow keys or WASD
-    //     float moveHorizontal = Input.GetAxis("Horizontal");
-    //     float moveVertical = Input.GetAxis("Vertical");
+         // Calculate movement direction
+         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-    //     // Calculate movement direction
-    //     Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-    //     // Apply movement to the Rigidbody
-    //     rb.AddForce(movement * speed);
-    // }
-
+         // Apply movement to the Rigidbody
+         rb.AddForce(movement * speed);
+    }
+    */
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && carry == null)
@@ -45,16 +45,25 @@ public class PickUp: MonoBehaviour
     void PickUpF()
     {
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 3f))
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 7f))
         {
-            //if (hit.collider.CompareTag("Pickup"))
-            if (hit.collider.CompareTag("Glass")) //Changed to Glass for interaction with glass objects
+  
+            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green, 10f);
+            Debug.Log(hit.transform.tag);
+            if (hit.collider.CompareTag("Glass"))
             {
-                Debug.Log("GlassObject Hit!"); //For Debugging
+                Debug.Log("GlassObject Hit!"); 
+
                 carry = hit.collider.gameObject;
+                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z);
                 carry.GetComponent<Rigidbody>().isKinematic = true;
                 carry.transform.parent = transform;
             }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward * 7f, Color.red, 10f);
         }
     }
 
