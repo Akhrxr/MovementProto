@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PickUp: MonoBehaviour
 {
-    
+    Quaternion storeRotation; 
     public float speed = 5f; // Movement speed
     Rigidbody rb; // Reference to the Rigidbody component
     public GameObject carry;
@@ -40,6 +40,11 @@ public class PickUp: MonoBehaviour
         {
             Drop();
         }
+        if(carry != null)
+        {
+            carry.transform.rotation = storeRotation;
+        }
+        
     }
 
     void PickUpF()
@@ -49,28 +54,27 @@ public class PickUp: MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, 7f))
         {
   
-            Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green, 10f);
-            Debug.Log(hit.transform.tag);
+            //Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green, 10f);
+            //Debug.Log(hit.transform.tag);
             if (hit.collider.CompareTag("Glass"))
             {
-                Debug.Log("GlassObject Hit!"); 
-
+                storeRotation = hit.collider.transform.rotation;
+                Debug.Log("GlassObject Hit!");
+                
                 carry = hit.collider.gameObject;
-                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z);
+                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z); 
                 carry.GetComponent<Rigidbody>().isKinematic = true;
                 carry.transform.parent = transform;
             }
         }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.forward * 7f, Color.red, 10f);
-        }
+
     }
 
     void Drop()
     {   
             
         carry.GetComponent<Rigidbody>().isKinematic = false;
+        carry.transform.rotation = storeRotation;
         carry.transform.parent = null;
         carry = null;
              
