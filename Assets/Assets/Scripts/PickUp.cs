@@ -62,7 +62,7 @@ public class PickUp: MonoBehaviour
                 Debug.Log("GlassObject Hit!");
                 
                 carry = hit.collider.gameObject;
-                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z);
+                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 1f, carry.transform.position.z + 0.4f);
                 //carry.GetComponent<Rigidbody>().isKinematic = true;
                 carry.GetComponent<Rigidbody>().useGravity = false;
                 carry.transform.parent = transform;
@@ -75,7 +75,7 @@ public class PickUp: MonoBehaviour
     {   
             
         //carry.GetComponent<Rigidbody>().isKinematic = false;
-        carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y -3f, carry.transform.position.z);
+        carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y - 0.83f, carry.transform.position.z);
         carry.transform.rotation = storeRotation;
         carry.GetComponent<Rigidbody>().useGravity = true;
         carry.transform.parent = null;
