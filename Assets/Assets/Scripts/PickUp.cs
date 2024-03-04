@@ -62,8 +62,9 @@ public class PickUp: MonoBehaviour
                 Debug.Log("GlassObject Hit!");
                 
                 carry = hit.collider.gameObject;
-                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z); 
-                carry.GetComponent<Rigidbody>().isKinematic = true;
+                carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + 3f, carry.transform.position.z);
+                //carry.GetComponent<Rigidbody>().isKinematic = true;
+                carry.GetComponent<Rigidbody>().useGravity = false;
                 carry.transform.parent = transform;
             }
         }
@@ -73,8 +74,10 @@ public class PickUp: MonoBehaviour
     void Drop()
     {   
             
-        carry.GetComponent<Rigidbody>().isKinematic = false;
+        //carry.GetComponent<Rigidbody>().isKinematic = false;
+        carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y -3f, carry.transform.position.z);
         carry.transform.rotation = storeRotation;
+        carry.GetComponent<Rigidbody>().useGravity = true;
         carry.transform.parent = null;
         carry = null;
              
