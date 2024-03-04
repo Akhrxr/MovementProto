@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Floor
   - Target
+  - Glass
+  - Wall
   layers:
   - Default
   - TransparentFX
