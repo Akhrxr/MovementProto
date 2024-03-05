@@ -4,28 +4,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {   
-    private float curVelocity;
-    private float mySpeed = 20f;
+    private float mySpeed = 12f;
     //bool IsGrounded = true;
     float rot = 0f;
     float r;
-    /*private void OnTriggerEnter(Collider other) 
-    {
-        if (other.transform.tag == "Floor")
-        {
-            IsGrounded = true;
-        }
-    }
-    private void OnTriggerExit(Collider other) 
-    {
-        if (other.transform.tag == "Floor")
-        {
-            IsGrounded = false;
-        }
-    }*/
+
     public void playerMovement(Rigidbody myRB)
     {
-        Debug.Log(IsGrounded());
+        //Debug.Log(IsGrounded());
     //Rotation
         rotation();
     //Movement
@@ -37,44 +23,27 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            if (IsGrounded())
-            {
-                myRB.velocity = new Vector3(0, myRB.velocity.y, 0);
-            }
+            myRB.velocity = new Vector3(0, 0, 0);
         }
-        /*if (IsGrounded())
-        {
-                if (Input.GetAxis("Jump") > 0) 
-                {
-                    myRB.AddForce(Vector3.up * 6 * mySpeed);
-                }
+        if (transform.position.y < 1.2f) {
+            transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
         }
-        else 
-        {
-            if (Input.GetAxis("Jump") > 0) 
-                {
-                    myRB.AddForce(Vector3.up * 5 * mySpeed);
-                }
-            else if (Input.GetKeyDown(KeyCode.Tab)) 
-            {
-                myRB.AddRelativeForce(Vector3.down *10 * mySpeed * Time.deltaTime, ForceMode.VelocityChange);
-            }
-        }*/
+        myRB.angularVelocity = Vector3.zero;
     }
     
     public void rotation()
     {   
         if (Input.GetAxis("Horizontal") > 0) {
-            rot += 0.7f;
+            rot += 2f;
         }
         else if (Input.GetAxis("Horizontal") < 0) {
-            rot += -0.7f;
+            rot += -2f;
         }
         float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rot, ref r, 0.1f);
         transform.rotation = Quaternion.Euler(0, Angle, 0);
     }
 
-    public bool IsGrounded()
+    /*public bool IsGrounded() //Might need later on possibly maybe hopefully maybe
     {
         if (Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hitinfo, 2f)) {
             if (hitinfo.collider.gameObject.transform.tag == "Floor") {
@@ -82,5 +51,5 @@ public class Movement : MonoBehaviour
             }
         }
         return false;
-    }
+    }*/
 }
