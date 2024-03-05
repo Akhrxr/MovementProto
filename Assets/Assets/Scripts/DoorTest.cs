@@ -9,11 +9,24 @@ public class DoorTest : MonoBehaviour
     public GameObject endObj;
     public Animator open;
     private bool doorOpen = false;
+    public LineRenderer laserline;
+    public Transform laserOrigin;
+    public Transform endObjOrigin;
+
+    private void Awake()
+    {
+        laserline = GetComponent<LineRenderer>();
+        laserline.enabled = true;
+        laserline.SetPosition(0, laserOrigin.position);
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        laserline.positionCount = 2;
+        laserline.SetPosition(0, laserOrigin.position);
+        laserline.SetPosition(1, endObjOrigin.position);
     }
 
     // Update is called once per frame
@@ -21,12 +34,12 @@ public class DoorTest : MonoBehaviour
     {
         // Debug.DrawRay(startObj.transform.position, startObj.transform.up * 20, Color.red);
 
-        if (laserOn)
+        if (!laserOn)
         {
-            Debug.DrawRay(startObj.transform.position, startObj.transform.up * 20f);
+            Debug.DrawRay(startObj.transform.position, startObj.transform.up * 100f);
 
             RaycastHit hit;
-            if(Physics.Raycast(startObj.transform.position, startObj.transform.up, out hit, 20f))
+            if(Physics.Raycast(startObj.transform.position, startObj.transform.up, out hit, 100f))
             {
                 if (hit.collider.gameObject.CompareTag("Target") && !doorOpen)
                 {
