@@ -34,10 +34,10 @@ public class Movement : MonoBehaviour
     public void rotation()
     {   
         if (Input.GetAxis("Horizontal") > 0) {
-            rot += 2f;
+            rot += 0.5f; //I've reduced rotation speed to not be so fast as it was when it was originally += 2f - Sean
         }
         else if (Input.GetAxis("Horizontal") < 0) {
-            rot += -2f;
+            rot += -0.5f;
         }
         float Angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rot, ref r, 0.1f);
         transform.rotation = Quaternion.Euler(0, Angle, 0);
