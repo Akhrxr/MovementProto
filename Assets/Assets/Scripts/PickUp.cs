@@ -58,8 +58,11 @@ public class PickUp: MonoBehaviour
             //Debug.Log(hit.transform.tag);
             if (hit.collider.CompareTag("Glass"))
             {
+                var hitObjectScript = hit.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of PickedUp Object
+                hitObjectScript.switchToInactive(); //Switching GlassObject and its subsequent hit objects to Inactive
+                hitObjectScript.switchToOffGround(); //Switching isOnGround Variable of Glass Object to Off
+
                 storeRotation = hit.collider.transform.rotation;
-                Debug.Log("GlassObject Hit!");
                 
                 carry = hit.collider.gameObject;
                 carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y + pickUpHeight, carry.transform.position.z);
@@ -73,14 +76,15 @@ public class PickUp: MonoBehaviour
 
     void Drop()
     {   
-            
+        var carriedObjectScript = carry.GetComponent<Glass_Ray>(); //Accessing Script of PickedUp Object
+        carriedObjectScript.switchToOnGround(); //Switching isOnGround Variable of Glass Object to On
+    
         //carry.GetComponent<Rigidbody>().isKinematic = false;
         carry.transform.position = new Vector3(carry.transform.position.x, carry.transform.position.y - pickUpHeight, carry.transform.position.z);
         carry.transform.rotation = storeRotation;
         carry.GetComponent<Rigidbody>().useGravity = true;
         carry.transform.parent = null;
         carry = null;
-             
     }
 }
 
