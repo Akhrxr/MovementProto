@@ -12,6 +12,7 @@ public class DoorTest : MonoBehaviour
     public LineRenderer laserline;
     public Transform laserOrigin;
     public Transform endObjOrigin;
+    [SerializeField] private Transform endObjOrigin_Main; //The original ending area for the laser
 
     private void Awake()
     {
@@ -50,7 +51,14 @@ public class DoorTest : MonoBehaviour
                     open.Play("DoorOpen", 0, 0);
                     doorOpen = true;
                     StartCoroutine(WaitForAnimation());
+                } else if(hit.collider.tag == "Glass"){ //If Light Source RayCast hits GlassObject, switchToActive()
+                    endObjOrigin.position = new Vector3(hit.collider.gameObject.transform.position.x, endObjOrigin.position.y, hit.collider.gameObject.transform.position.z); //Changing position of laserEnd to draw line until hitObject position
+                    var hitObjectScript = hit.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of RayCastHit Object
+                    hitObjectScript.switchToActive();
+                } else{
+                    endObjOrigin.position = endObjOrigin_Main.position; //Resetting end position of laser to the original if no objects are hit
                 }
+                laserline.SetPosition(1, endObjOrigin.position); //Setting end position of laser
             }
         }
     }
