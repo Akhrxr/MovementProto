@@ -19,16 +19,20 @@ public class UI_Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Code based on https://www.youtube.com/watch?v=POq1i8FyRyQ: Make a TIMER & COUNTDOWN in 5 Mins | Unity Tutorial for Beginners 
-        if(remainingTime >= 0){
-            remainingTime -= Time.deltaTime;
-            minutes = Mathf.FloorToInt(remainingTime / 60);
-            seconds = Mathf.FloorToInt(remainingTime % 60);
-            timerText.text = "Time Remaining: " + string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
+        if(GameManager.instance.isGameOverStatus() == false){ //If game is still in play
+            //Code based on https://www.youtube.com/watch?v=POq1i8FyRyQ: Make a TIMER & COUNTDOWN in 5 Mins | Unity Tutorial for Beginners 
+            if(remainingTime > 0){
+                remainingTime -= Time.deltaTime;
+                minutes = Mathf.FloorToInt(remainingTime / 60);
+                seconds = Mathf.FloorToInt(remainingTime % 60);
+                timerText.text = "Time Remaining: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+            } else{ //If time remaining <= 0, switch to game over
+                GameManager.instance.GameOver_Lose();
+            }
 
-        if(remainingTime <= 61){ //Switch timer colour to red if less than 1 minute left
-                timerText.color = new Color(0.8f, 0f, 0f);
+            if(remainingTime <= 61){ //Switch timer colour to red if less than 1 minute left
+                    timerText.color = new Color(0.8f, 0f, 0f);
+            }
         }
     }
 }

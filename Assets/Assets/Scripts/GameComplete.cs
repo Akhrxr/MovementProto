@@ -17,9 +17,8 @@ public class GameComplete : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collider){
-        Debug.Log("Object Detected!!");
         if(collider.tag == "Player"){
-            Debug.Log("Game Clear!");
+            GameManager.instance.GameOver_Win();
         }
     }
 }

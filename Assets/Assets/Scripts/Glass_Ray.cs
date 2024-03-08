@@ -11,6 +11,7 @@ public class Glass_Ray : MonoBehaviour
     [SerializeField] private Transform laserOrigin;
     [SerializeField] private Transform laserEnd; //Dynamic endpoint of laser
     [SerializeField] private Transform laserEnd_OG; //Original endpoint of laser
+    [SerializeField] private GameObject particleEmitter;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class Glass_Ray : MonoBehaviour
     {
         isActive = false; //Set isActive and isHitByLight to false upon start of level
         isOnGround = true; //Glass Object isn't picked up yet
+        particleEmitter.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,10 +54,12 @@ public class Glass_Ray : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange), Color.red); //Make RayCast RED if is hit by light
             reflectedLine.SetPosition(1, laserEnd.position); //Setting end position of reflected laser
             reflectedLine.enabled = true;
+            particleEmitter.SetActive(true);
         } else{
             Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange)); //RayCast WHITE if not active
             reflectedLine.SetPosition(1, laserEnd.position);
             reflectedLine.enabled = false;
+            particleEmitter.SetActive(false);
         }
     }
 
@@ -75,7 +79,7 @@ public class Glass_Ray : MonoBehaviour
             }
         }
         isActive = false;
-        //reflectedLine.enabled = false;
+        particleEmitter.SetActive(false);
     }
 
     public void switchToOnGround(){
