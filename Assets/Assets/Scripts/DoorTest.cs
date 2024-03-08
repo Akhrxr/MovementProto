@@ -55,6 +55,8 @@ public class DoorTest : MonoBehaviour
                     endObjOrigin.position = new Vector3(hit.collider.gameObject.transform.position.x, endObjOrigin.position.y, hit.collider.gameObject.transform.position.z); //Changing position of laserEnd to draw line until hitObject position
                     var hitObjectScript = hit.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of RayCastHit Object
                     hitObjectScript.switchToActive();
+                } else if(hit.collider.tag == "Player"){
+                    endObjOrigin.position = new Vector3(hit.collider.gameObject.transform.position.x, endObjOrigin.position.y, hit.collider.gameObject.transform.position.z); //Changing position of laserEnd to draw line until hitObject position
                 } else{
                     endObjOrigin.position = endObjOrigin_Main.position; //Resetting end position of laser to the original if no objects are hit
                 }
