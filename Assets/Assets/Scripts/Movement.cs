@@ -19,6 +19,9 @@ public class Movement : MonoBehaviour
         //Movement
         Vector3 MoveVector = transform.TransformDirection(MovementInput) * mySpeed;
         myRB.velocity = new Vector3(MoveVector.x, myRB.velocity.y, MoveVector.z);
+        if (transform.position.y < 1.2f) {
+            transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
+        }
         
     }
     
