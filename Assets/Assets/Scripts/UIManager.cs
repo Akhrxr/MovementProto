@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TextMeshProUGUI youWinText;
     [SerializeField] private TextMeshProUGUI youLoseText;
+    [SerializeField] private GameObject leftArrow, upArrow, rightArrow, downArrow;
 
     void Awake(){
         if(instance == null){
