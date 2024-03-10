@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 
 public class Glass_Ray : MonoBehaviour
 {
-    [SerializeField] private float raycastRange = 10;
+    private float raycastRange = 15;
     [SerializeField] private bool isActive = false; //If active, fire light source
     [SerializeField] private bool isOnGround = true; //If isOnGround, it can be set to Active
+    [SerializeField] private string direction; //For the UI
     private LineRenderer reflectedLine;
     [SerializeField] private Transform laserOrigin;
     [SerializeField] private Transform laserEnd; //Dynamic endpoint of laser
@@ -49,91 +50,78 @@ public class Glass_Ray : MonoBehaviour
         reflectedLine.SetPosition(0, laserOrigin.position);
 
         if (Physics.Raycast(lightBeam, out RaycastHit hitObject, raycastRange)) { //Raycast hits something
-            laserEnd.position = new Vector3(hitObject.collider.gameObject.transform.position.x, laserEnd.position.y, hitObject.collider.gameObject.transform.position.z); //Changing position of laserEnd to draw line until hitObject position
-            if (hitObject.collider.gameObject.CompareTag("Target1") && !door1Open)
-            {
-                Debug.Log("ray shooting");
+            //laserEnd.position = new Vector3(hitObject.collider.gameObject.transform.position.x, laserEnd.position.y, hitObject.collider.gameObject.transform.position.z);
+            if(direction == "up" || direction == "down"){ //Changing position of laserEnd to draw line until hitObject position
+                laserEnd.position = new Vector3(laserEnd_OG.position.x, laserEnd.position.y, hitObject.collider.gameObject.transform.position.z);
+            } else{ // direction == "right" || direction == "left"
+                laserEnd.position = new Vector3(hitObject.collider.gameObject.transform.position.x, laserEnd.position.y, laserEnd_OG.position.z);
+            }
+
+            if (hitObject.collider.gameObject.CompareTag("Target1") && !door1Open && isActive == true){
                 door1Open = true;
                 hitObject.transform.SendMessage("OpenDoor1");
-                //target1.OpenDoor1();
-            }
-            if (hitObject.collider.gameObject.CompareTag("Target2") && !door2Open)
-            {
-                Debug.Log("ray shooting");
+            } else if (hitObject.collider.gameObject.CompareTag("Target2") && !door2Open && isActive == true){
                 door2Open = true;
-
                 hitObject.transform.SendMessage("OpenDoor2");
-            }
-            if (hitObject.collider.gameObject.CompareTag("Target3") && !door3Open)
-            {
-                Debug.Log("ray shooting");
+            } else if (hitObject.collider.gameObject.CompareTag("Target3") && !door3Open && isActive == true){
                 door3Open = true;
                 hitObject.transform.SendMessage("OpenDoor3");
-
-            }
-            if (hitObject.collider.gameObject.CompareTag("Target4") && !door4Open)
-            {
-                Debug.Log("ray shooting");
+            } else if (hitObject.collider.gameObject.CompareTag("Target4") && !door4Open && isActive == true){
                 door4Open = true;
                 hitObject.transform.SendMessage("OpenDoor4");
-            }
-            if (hitObject.collider.gameObject.CompareTag("Target5") && !door5Open)
-            {
-                Debug.Log("ray shooting");
+            } else if (hitObject.collider.gameObject.CompareTag("Target5") && !door5Open && isActive == true){
                 door5Open = true;
-
                 hitObject.transform.SendMessage("OpenDoor5");
-            }
-            if (hitObject.collider.tag == "Glass") { //If this Glass Object's RayCast hits another, switchToActive()
+            } else if (hitObject.collider.tag == "Glass") { //If this Glass Object's RayCast hits another, switchToActive()
                 var hitObjectScript = hitObject.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of RayCastHit Object
                 if (isActive == true) {
                     hitObjectScript.switchToActive();
                 } else {
                     hitObjectScript.switchToInactive();
                 }
-            }
-            } else { //Raycast hits nothing
-                laserEnd.position = laserEnd_OG.position; //Ressetting end point of laser to base range of glass object
-            }
-
-            if (isActive == true) { //For debugging, make RayCast visible
-                Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange), Color.red); //Make RayCast RED if is hit by light
-                reflectedLine.SetPosition(1, laserEnd.position); //Setting end position of reflected laser
-                reflectedLine.enabled = true;
-                particleEmitter.SetActive(true);
-            } else {
-                Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange)); //RayCast WHITE if not active
-                reflectedLine.SetPosition(1, laserEnd.position);
-                reflectedLine.enabled = false;
-                particleEmitter.SetActive(false);
-            }
+            } 
+        } else { //Raycast hits nothing
+            laserEnd.position = laserEnd_OG.position; //Ressetting end point of laser to base range of glass object
         }
 
-        public void switchToActive() {
-            if (isOnGround == true) { //Can only become active if on the ground
-                isActive = true;
-            }
-        }
-
-        public void switchToInactive() {
-            Vector3 raycastDirection = Vector3.forward; //Generating RayCast to send a signal to other glass objects hit to switch to inactive
-            Ray lightBeam = new Ray(transform.position, transform.TransformDirection(raycastDirection * raycastRange));
-            if (Physics.Raycast(lightBeam, out RaycastHit hitObject, raycastRange)) {
-                if (hitObject.collider.tag == "Glass") { //If this Glass Object's RayCast hits another, switchToActive()
-                    var hitObjectScript = hitObject.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of RayCastHit Object
-                    hitObjectScript.switchToInactive();
-                }
-            }
-            isActive = false;
+        if (isActive == true) { //For debugging, make RayCast visible
+            //Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange), Color.red); //Make RayCast RED if is hit by light
+            reflectedLine.SetPosition(1, laserEnd.position); //Setting end position of reflected laser
+            reflectedLine.enabled = true;
+            particleEmitter.SetActive(true);
+        } else {
+            //Debug.DrawRay(transform.position, transform.TransformDirection(raycastDirection * raycastRange)); //RayCast WHITE if not active
+            reflectedLine.SetPosition(1, laserEnd.position);
+            reflectedLine.enabled = false;
             particleEmitter.SetActive(false);
         }
+    }
 
-        public void switchToOnGround() {
-            isOnGround = true;
+    public void switchToActive() {
+        if (isOnGround == true) { //Can only become active if on the ground
+            isActive = true;
         }
+    }
 
-        public void switchToOffGround() {
-            isOnGround = false;
+    public void switchToInactive() {
+        Vector3 raycastDirection = Vector3.forward; //Generating RayCast to send a signal to other glass objects hit to switch to inactive
+        Ray lightBeam = new Ray(transform.position, transform.TransformDirection(raycastDirection * raycastRange));
+        if (Physics.Raycast(lightBeam, out RaycastHit hitObject, raycastRange)) {
+            if (hitObject.collider.tag == "Glass") { //If this Glass Object's RayCast hits another, switchToActive()
+                var hitObjectScript = hitObject.collider.gameObject.GetComponent<Glass_Ray>(); //Accessing Script of RayCastHit Object
+                hitObjectScript.switchToInactive();
+            }
         }
+        isActive = false;
+        particleEmitter.SetActive(false);
+    }
+
+    public void switchToOnGround() {
+        isOnGround = true;
+    }
+
+    public void switchToOffGround() {
+        isOnGround = false;
+    }
 
 }

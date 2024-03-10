@@ -33,7 +33,6 @@ public class PickUp: MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && carry == null)
         {
-            Debug.Log("Space Pressed"); //For Debugging
             PickUpF();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && carry != null)
