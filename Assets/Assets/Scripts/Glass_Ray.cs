@@ -9,7 +9,7 @@ public class Glass_Ray : MonoBehaviour
     private float raycastRange = 15;
     [SerializeField] private bool isActive = false; //If active, fire light source
     [SerializeField] private bool isOnGround = true; //If isOnGround, it can be set to Active
-    [SerializeField] private string direction; //For the UI
+    [SerializeField] public string direction; //For the UI
     private LineRenderer reflectedLine;
     [SerializeField] private Transform laserOrigin;
     [SerializeField] private Transform laserEnd; //Dynamic endpoint of laser
@@ -122,6 +122,10 @@ public class Glass_Ray : MonoBehaviour
 
     public void switchToOffGround() {
         isOnGround = false;
+    }
+
+    public string getDirection(){
+        return direction;
     }
 
 }

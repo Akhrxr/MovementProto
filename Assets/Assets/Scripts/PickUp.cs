@@ -68,6 +68,9 @@ public class PickUp: MonoBehaviour
                 //carry.GetComponent<Rigidbody>().isKinematic = true;
                 carry.GetComponent<Rigidbody>().useGravity = false;
                 carry.transform.parent = transform;
+
+                UIManager.instance.displayEquipped(hitObjectScript.getDirection()); //Updating UI
+                UIManager.instance.updateEquippedText(hitObjectScript.getDirection());
             }
         }
 
@@ -84,6 +87,9 @@ public class PickUp: MonoBehaviour
         carry.GetComponent<Rigidbody>().useGravity = true;
         carry.transform.parent = null;
         carry = null;
+
+        UIManager.instance.displayUnequipped(); //Updating UI
+        UIManager.instance.updateEquippedText("none");
     }
 }
 
