@@ -18,6 +18,7 @@ public class DoorTarget : MonoBehaviour
     [SerializeField] private GameObject doorParticleEmitter;
     private ParticleSystem doorParticles;
     
+    private AudioSource doorAudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,8 @@ public class DoorTarget : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("Door1", 0, 0);
             door1Open = true;
+            doorAudioSource = Door.GetComponent<AudioSource>();
+            doorAudioSource.Play();
             StartCoroutine(WaitForAnimation());
         }
     }
@@ -51,6 +54,8 @@ public class DoorTarget : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("Door2", 0, 0);
             door2Open = true;
+            doorAudioSource = Door.GetComponent<AudioSource>();
+            doorAudioSource.Play();
             StartCoroutine(WaitForAnimation());
         }
     }
@@ -62,6 +67,8 @@ public class DoorTarget : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("Door3", 0, 0);
             door3Open = true;
+            doorAudioSource = Door.GetComponent<AudioSource>();
+            doorAudioSource.Play();
             StartCoroutine(WaitForAnimation());
         }
     }
@@ -73,6 +80,8 @@ public class DoorTarget : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("Door4", 0, 0);
             door4Open = true;
+            doorAudioSource = Door.GetComponent<AudioSource>();
+            doorAudioSource.Play();
             StartCoroutine(WaitForAnimation());
         }
     }
@@ -84,6 +93,8 @@ public class DoorTarget : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("FinalDoorOpen", 0, 0);
             door5Open = true;
+            doorAudioSource = Door.GetComponent<AudioSource>();
+            doorAudioSource.Play();
             StartCoroutine(WaitForAnimation());
         }
     }
