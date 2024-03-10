@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver_Lose(){
+        PlayerManager.Instance.neonDeath();
         isGameOver = true;
     }
 }
