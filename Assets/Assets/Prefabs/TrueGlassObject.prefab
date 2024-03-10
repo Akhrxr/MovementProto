@@ -5156,7 +5156,7 @@ GameObject:
   - component: {fileID: 5163628438299831737}
   - component: {fileID: 6032561663205733397}
   - component: {fileID: 7856987244056843000}
-  - component: {fileID: 6495760735548731508}
+  - component: {fileID: 8467801014206321962}
   m_Layer: 0
   m_Name: GlassObject (3)
   m_TagString: Glass
@@ -5229,8 +5229,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6495760735548731508
-BoxCollider:
+--- !u!64 &8467801014206321962
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5247,9 +5247,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.1832579, y: 2, z: 1.4886891}
-  m_Center: {x: 0.013323367, y: 0, z: -0.04686922}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3775266839794907670
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,7 +5263,6 @@ GameObject:
   - component: {fileID: 5501180947045569723}
   - component: {fileID: 6759526477654203317}
   - component: {fileID: 1931719790679043716}
-  - component: {fileID: 1273993857861690266}
   m_Layer: 0
   m_Name: Marker
   m_TagString: Untagged
@@ -5356,27 +5356,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1273993857861690266
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775266839794907670}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.00000047683716, z: 0}
 --- !u!1 &4285002906616244033
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,6 +5622,11 @@ MonoBehaviour:
   laserEnd: {fileID: 7637857131828845384}
   laserEnd_OG: {fileID: 894292050355502953}
   particleEmitter: {fileID: 1783193793804903263}
+  target1: {fileID: 0}
+  target2: {fileID: 0}
+  target3: {fileID: 0}
+  target4: {fileID: 0}
+  target5: {fileID: 0}
 --- !u!54 &-3925468471021627792
 Rigidbody:
   m_ObjectHideFlags: 0
