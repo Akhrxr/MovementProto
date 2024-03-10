@@ -14,13 +14,16 @@ public class DoorTarget : MonoBehaviour
     private bool door3Open = false;
     private bool door4Open = false;
     private bool door5Open = false;
+
+    [SerializeField] private GameObject doorParticleEmitter;
+    private ParticleSystem doorParticles;
     
     // Start is called before the first frame update
     void Start()
     {
         Animator = Door.GetComponent<Animator>();
         targetObjects = GameObject.FindGameObjectsWithTag("Glass");
-
+        doorParticles = doorParticleEmitter.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class DoorTarget : MonoBehaviour
     {
         if (!door1Open)
         {
+            doorParticles.Play(); //Playing particle burst
             Animator.enabled = true;
             Animator.Play("Door1", 0, 0);
             door1Open = true;
@@ -43,6 +47,7 @@ public class DoorTarget : MonoBehaviour
     {
         if (!door2Open)
         {
+            doorParticles.Play(); //Playing particle burst
             Animator.enabled = true;
             Animator.Play("Door2", 0, 0);
             door2Open = true;
@@ -53,6 +58,7 @@ public class DoorTarget : MonoBehaviour
     {
         if (!door3Open)
         {
+            doorParticles.Play(); //Playing particle burst
             Animator.enabled = true;
             Animator.Play("Door3", 0, 0);
             door3Open = true;
@@ -63,6 +69,7 @@ public class DoorTarget : MonoBehaviour
     {
         if (!door4Open)
         {
+            doorParticles.Play(); //Playing particle burst
             Animator.enabled = true;
             Animator.Play("Door4", 0, 0);
             door4Open = true;
@@ -73,6 +80,7 @@ public class DoorTarget : MonoBehaviour
     {
         if (!door5Open)
         {
+            doorParticles.Play(); //Playing particle burst
             Animator.enabled = true;
             Animator.Play("FinalDoorOpen", 0, 0);
             door5Open = true;
