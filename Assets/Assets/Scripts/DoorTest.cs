@@ -12,7 +12,10 @@ public class DoorTest : MonoBehaviour
     public LineRenderer laserline;
     public Transform laserOrigin;
     public Transform endObjOrigin;
+<<<<<<< HEAD
     [SerializeField] private float laserRange = 100f;
+=======
+>>>>>>> 625469d97b002ffb283c6329aa42a77b520fe75f
     [SerializeField] private Transform endObjOrigin_Main; //The original ending area for the laser
 
     private void Awake()
@@ -38,10 +41,10 @@ public class DoorTest : MonoBehaviour
 
         if (!laserOn)
         {
-            Debug.DrawRay(startObj.transform.position, startObj.transform.up * 100f, Color.red);
+            Debug.DrawRay(startObj.transform.position, startObj.transform.up * 100f);
 
             RaycastHit hit;
-            if(Physics.Raycast(startObj.transform.position, startObj.transform.up, out hit, laserRange))
+            if(Physics.Raycast(startObj.transform.position, startObj.transform.up, out hit, 100f))
             {
                 if (hit.collider.gameObject.CompareTag("Target") && !doorOpen)
                 {
