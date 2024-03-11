@@ -13,7 +13,9 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get { return _instance;}}
     [SerializeField] private GameObject neonBody;
     [SerializeField] private GameObject neonDeathParticleEmitter;
-    private ParticleSystem deathParticles;
+    private ParticleSystem deathParticles;    
+    public GameObject PauseMenuObj;
+    private PauseMenu PMScript;
 
 
     private void Awake() {
@@ -30,12 +32,16 @@ public class PlayerManager : MonoBehaviour
     private void Start() 
     {
         RB = Player.GetComponent<Rigidbody>();
+        PMScript = PauseMenuObj.GetComponent<PauseMenu>();
         deathParticles = neonDeathParticleEmitter.GetComponent<ParticleSystem>();
     }
 
     void Update()
-    {
-        MovementScript.playerMovement(RB);
+    {   
+        if (!PMScript.isPaused) 
+        {
+            MovementScript.playerMovement(RB);
+        }
     }
 
     public void neonDeath(){

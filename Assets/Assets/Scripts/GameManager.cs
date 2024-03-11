@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private static bool gameIsPaused = false;
     private static bool playerWin = false;
 
+    public GameObject PauseMenuObj;
+    private PauseMenu PMScript;
+
     // Awake is called upon creation, before everything else 
     void Awake(){
         if(instance == null){
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PMScript = PauseMenuObj.GetComponent<PauseMenu>();
         isGameOver = false;
         gameIsPaused = false;
         playerWin = false;
@@ -30,7 +34,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameIsPaused = PMScript.isPaused;
     }
 
     public bool isGameOverStatus(){
