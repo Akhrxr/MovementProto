@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {   
-        if (!PMScript.isPaused) 
+        if (!PMScript.isPaused)
         {
             MovementScript.playerMovement(RB);
         }

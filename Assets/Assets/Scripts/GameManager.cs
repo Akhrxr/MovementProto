@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,5 +50,13 @@ public class GameManager : MonoBehaviour
     public void GameOver_Lose(){
         PlayerManager.Instance.neonDeath();
         isGameOver = true;
+    }
+
+    public void restartGame(){
+        SceneManager.LoadScene("PlayScene");
+    }
+
+    public void exitGame(){
+        SceneManager.LoadScene(0);
     }
 }
