@@ -12,7 +12,7 @@ public class DoorTest : MonoBehaviour
     public LineRenderer laserline;
     public Transform laserOrigin;
     public Transform endObjOrigin;
-    [SerializeField] private float laserRange = 100f;
+    [SerializeField] private float laserRange = 5f;
     [SerializeField] private Transform endObjOrigin_Main; //The original ending area for the laser
 
     private void Awake()
