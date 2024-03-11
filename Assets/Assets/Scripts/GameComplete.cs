@@ -24,6 +24,7 @@ public class GameComplete : MonoBehaviour
             GameManager.instance.GameOver_Win();
             completeParticles.Play();
             PlayerManager.Instance.neonDeath();
+            CameraManager.instance.switchToEndCamera(); //Switching cameras
         }
     }
 }
