@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private ParticleSystem deathParticles;    
     public GameObject PauseMenuObj;
     private PauseMenu PMScript;
+    [SerializeField] private AudioSource deathAudioSource;
 
 
     private void Awake() {
@@ -46,6 +47,7 @@ public class PlayerManager : MonoBehaviour
 
     public void neonDeath()
     {
+        deathAudioSource.Play();
         neonDeathParticleEmitter.transform.position = Player.transform.position; //Changing position of particle emitter to Neon's location
         deathParticles.Play(); //Playing particle burst
         neonBody.SetActive(false); //Deactivating Neon
