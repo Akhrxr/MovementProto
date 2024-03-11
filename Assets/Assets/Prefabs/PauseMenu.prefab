@@ -1023,7 +1023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6026279798683362127}
-  - component: {fileID: 2242377461128358839}
+  - component: {fileID: 1719810315999219520}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1047,7 +1047,7 @@ Transform:
   - {fileID: 7892250609683209801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2242377461128358839
+--- !u!114 &1719810315999219520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1056,7 +1056,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3962763054782289075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95fc5cb797fc90b49bf70784a6ed2701, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e3a8b1f291c2bd4aaaa1f1911080f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 5203541181320924016}

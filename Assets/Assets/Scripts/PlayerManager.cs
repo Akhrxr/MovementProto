@@ -44,7 +44,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void neonDeath(){
+    public void neonDeath()
+    {
         neonDeathParticleEmitter.transform.position = Player.transform.position; //Changing position of particle emitter to Neon's location
         deathParticles.Play(); //Playing particle burst
         neonBody.SetActive(false); //Deactivating Neon
