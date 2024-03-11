@@ -15,7 +15,6 @@ TagManager:
   - Target3
   - Target4
   - Target5
-  - Indicator
   layers:
   - Default
   - TransparentFX
