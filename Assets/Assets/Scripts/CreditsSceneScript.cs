@@ -8,7 +8,7 @@ public class CreditsSceneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,7 +18,6 @@ public class CreditsSceneScript : MonoBehaviour
     }
 
     public void returnToMenu(){
-        Debug.Log("Returning To Menu");
-        SceneManager.LoadScene("MainMenu_Scene");
+        SceneManager.LoadScene(0);
     }
 }
