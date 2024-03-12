@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(nonDestroyablePauseMenu);
         TogglePauseMenu(false);
         resumeButton.onClick.AddListener(ResumeGame);
         mainMenuButton.onClick.AddListener(ReturnToMainMenu);
@@ -70,16 +69,19 @@ public class PauseMenu : MonoBehaviour
     void ResumeGame()
     {
         TogglePauseMenu(false);
+        TogglePauseMenu(false);
     }
 
     void ReturnToMainMenu()
     {
+        TogglePauseMenu(false);
         TogglePauseMenu(false);
         SceneManager.LoadScene(0);
     }
 
     void RestartGame()
     {
+        TogglePauseMenu(false);
         TogglePauseMenu(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

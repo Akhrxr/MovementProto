@@ -64,9 +64,14 @@ namespace SlimUI.ModernMenu{
         public AudioSource sliderSound;
         [Tooltip("The GameObject holding the Audio Source component for the SWOOSH SOUND when switching to the Settings Screen")]
         public AudioSource swooshSound;
+		private PauseMenu pauseMenuScript;
 
 		void Start(){
 			CameraObject = transform.GetComponent<Animator>();
+			
+			if (pauseMenuScript != null) {
+            	pauseMenuScript.enabled = false;
+			}
 
 			playMenu.SetActive(false);
 			exitMenu.SetActive(false);
