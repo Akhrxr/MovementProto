@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Assets/Scenes/InstructionsScene.unity
     guid: 23a4548e3ec2d43b993925e18160165b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Assets/Scenes/Cutscene.unity
-    guid: eac4a9eaae39c584e8f3ab93814778fe
+    guid: 726628a30212f524b8295e841ae39d4d
   - enabled: 1
     path: Assets/Assets/Scenes/PlayScene.unity
     guid: 6dbf54bbb0dc4484fac1c599ff63d919
