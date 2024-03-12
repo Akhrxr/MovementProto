@@ -43,6 +43,11 @@ public class PlayerManager : MonoBehaviour
         {
             MovementScript.playerMovement(RB);
         }
+        else 
+        {
+            transform.position = new Vector3(transform.position.x, 1.2f, transform.position.z);
+            RB.velocity = Vector3.zero;
+        }
     }
 
     public void neonDeath()
