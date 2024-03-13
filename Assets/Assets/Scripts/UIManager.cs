@@ -12,8 +12,8 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [SerializeField] private GameObject playUI;
     [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private TextMeshProUGUI youWinText;
-    [SerializeField] private TextMeshProUGUI youLoseText;
+    [SerializeField] private Text youWinText;
+    [SerializeField] private Text youLoseText;
     [SerializeField] private Text equippedObjectText, equippedObjectTextRight, equippedObjectTextLeft, equippedObjectTextUp, equippedObjectTextDown;
     [SerializeField] private GameObject leftArrow, upArrow, rightArrow, downArrow, glassObjectImage;
     //LocalizedText spinal;
@@ -42,11 +42,11 @@ public class UIManager : MonoBehaviour
         if(GameManager.instance.isGameOverStatus() == true){ //Activate GameOver UI if time runs out
             gameOverUI.SetActive(true);
             if(GameManager.instance.playerWinStatus() == true){
-                youWinText.enabled = true;
-                youLoseText.enabled = false;
+                youWinText.gameObject.SetActive(true);
+                youLoseText.gameObject.SetActive(false);
             } else{
-                youWinText.enabled = false;
-                youLoseText.enabled = true;
+                youWinText.gameObject.SetActive(false);
+                youLoseText.gameObject.SetActive(true);
             }
             playUI.SetActive(false);
         }
