@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Xml.XPath;
-using UnityEditor.Profiling.Memory.Experimental;
 using Assets.SimpleLocalization.Scripts;
 
 public class UIManager : MonoBehaviour
@@ -16,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text youLoseText;
     [SerializeField] private Text equippedObjectText, equippedObjectTextRight, equippedObjectTextLeft, equippedObjectTextUp, equippedObjectTextDown;
     [SerializeField] private GameObject leftArrow, upArrow, rightArrow, downArrow, glassObjectImage;
-    //LocalizedText spinal;
+    
     void Awake(){
         if(instance == null){
             instance = this;
