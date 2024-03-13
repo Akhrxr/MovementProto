@@ -59,4 +59,8 @@ public class GameManager : MonoBehaviour
     public void exitGame(){
         SceneManager.LoadScene(0);
     }
+
+    public void goToCredits(){
+        SceneManager.LoadScene("CreditsScene");
+    }
 }
