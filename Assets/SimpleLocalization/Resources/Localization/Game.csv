@@ -1,0 +1,18 @@
+Key,English,Spanish
+Game.PickUp,Press Space to Pick Up,Presiona Espacio para Recoger
+Game.Time,Time Remaining: ,Tiempo Restante: 
+Game.GameOver,GAME OVER,FIN DEL JUEGO
+Game.Win,You Win!,Ganaste!
+Game.Lose,You Lost,Perdiste
+Game.Restart,RESTART,REINICIAR
+Game.Exit,EXIT,SALIR
+Game.Pause,PAUSED,PAUSA
+Game.Resume,Resume,Continuar
+Game.Restart2,Restart,Reiniciar
+Game.Menu,Menu,Menu
+Game.Exit2,Exit,Salir
+Game.EquippedNone,Currently Equipped Object: None,Objeto Equipado: Ninguno
+Game.EquippedLeft,Currently Equipped Object: Glass (Left),Objeto Equipado: Vidrio (Izquierda)
+Game.EquippedRight,Currently Equipped Object: Glass (Right),Objeto Equipado: Vidrio (Derecha)
+Game.EquippedUp,Currently Equipped Object: Glass (Forward),Objeto Equipado: Vidrio (Adelante)
+Game.EquippedDown,Currently Equipped Object: Glass (Down),Objeto Equipado: Vidrio (Abajo)

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Xml.XPath;
+using UnityEditor.Profiling.Memory.Experimental;
+using Assets.SimpleLocalization.Scripts;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,9 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TextMeshProUGUI youWinText;
     [SerializeField] private TextMeshProUGUI youLoseText;
-    [SerializeField] private TextMeshProUGUI equippedObjectText;
+    [SerializeField] private Text equippedObjectText, equippedObjectTextRight, equippedObjectTextLeft, equippedObjectTextUp, equippedObjectTextDown;
     [SerializeField] private GameObject leftArrow, upArrow, rightArrow, downArrow, glassObjectImage;
-
+    //LocalizedText spinal;
     void Awake(){
         if(instance == null){
             instance = this;
@@ -54,12 +57,16 @@ public class UIManager : MonoBehaviour
         glassObjectImage.SetActive(true);
         if(direction == "left"){
             leftArrow.SetActive(true);
+            updateEquippedText("left");
         } else if(direction == "right"){
             rightArrow.SetActive(true);
+            updateEquippedText("right");
         } else if(direction == "down"){
             downArrow.SetActive(true);
+            updateEquippedText("down");
         } else{ //direction == "up"
             upArrow.SetActive(true);
+            updateEquippedText("up");
         }
     }
 
@@ -72,16 +79,39 @@ public class UIManager : MonoBehaviour
     }
 
     public void updateEquippedText(string direction){
-        if(direction == "left"){
-            equippedObjectText.text = "Currently Equipped Object: Glass (Left)";
+        if(direction == "left")
+        {
+            
+            equippedObjectTextLeft.gameObject.SetActive(true);
+            equippedObjectTextRight.gameObject.SetActive(false);
+            equippedObjectTextUp.gameObject.SetActive(false);
+            equippedObjectTextDown.gameObject.SetActive(false);
+            equippedObjectText.gameObject.SetActive(false);
         } else if(direction == "right"){
-            equippedObjectText.text = "Currently Equipped Object: Glass (Right)";
+            equippedObjectTextLeft.gameObject.SetActive(false);
+            equippedObjectTextRight.gameObject.SetActive(true);
+            equippedObjectTextUp.gameObject.SetActive(false);
+            equippedObjectTextDown.gameObject.SetActive(false);
+            equippedObjectText.gameObject.SetActive(false);
         } else if(direction == "down"){
-            equippedObjectText.text = "Currently Equipped Object: Glass (Back)";
+            equippedObjectTextLeft.gameObject.SetActive(true);
+            equippedObjectTextRight.gameObject.SetActive(false);
+            equippedObjectTextUp.gameObject.SetActive(false);
+            equippedObjectTextDown.gameObject.SetActive(true);
+            equippedObjectText.gameObject.SetActive(false);
         } else if(direction == "up"){
-            equippedObjectText.text = "Currently Equipped Object: Glass (Forward)";
+            equippedObjectTextLeft.gameObject.SetActive(true);
+            equippedObjectTextRight.gameObject.SetActive(false);
+            equippedObjectTextUp.gameObject.SetActive(true);
+            equippedObjectTextDown.gameObject.SetActive(false);
+            equippedObjectText.gameObject.SetActive(false);
+
         } else{ //direction == "none"
-            equippedObjectText.text = "Currently Equipped Object: None";
+            equippedObjectTextLeft.gameObject.SetActive(false);
+            equippedObjectTextRight.gameObject.SetActive(false);
+            equippedObjectTextUp.gameObject.SetActive(false);
+            equippedObjectTextDown.gameObject.SetActive(false);
+            equippedObjectText.gameObject.SetActive(true);
         }
     }
 }

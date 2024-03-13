@@ -16,7 +16,8 @@ public class PickUp : MonoBehaviour
     public GameObject glassObject;
     
     private bool created = false;
-    public TextMeshProUGUI displayText;
+    //public TextMeshProUGUI displayText;
+    public Text displayText;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -50,7 +51,7 @@ public class PickUp : MonoBehaviour
                 if (hit.collider.CompareTag("Glass"))
                 {
                     displayText.enabled = true;
-                    displayText.text = "Press Space to Pick Up";
+                    //displayText.text = "Press Space to Pick Up";
                 }
             }
             else
