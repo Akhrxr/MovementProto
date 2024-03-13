@@ -20,6 +20,9 @@ MonoBehaviour:
   - Name: MainMenu
     Id: 1236517518
     TextAsset: {fileID: 4900000, guid: 5171ae9942a8e9943a927f78e3655e47, type: 3}
+  - Name: Cutscene
+    Id: 1107447357
+    TextAsset: {fileID: 4900000, guid: a06978967ff21604eb283638a93a749b, type: 3}
   - Name: Game
     Id: 1166445143
     TextAsset: {fileID: 4900000, guid: 18dd3f5941ba1e74ba82f6598f5151c6, type: 3}

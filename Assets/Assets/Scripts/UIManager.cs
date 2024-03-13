@@ -94,13 +94,13 @@ public class UIManager : MonoBehaviour
             equippedObjectTextDown.gameObject.SetActive(false);
             equippedObjectText.gameObject.SetActive(false);
         } else if(direction == "down"){
-            equippedObjectTextLeft.gameObject.SetActive(true);
+            equippedObjectTextLeft.gameObject.SetActive(false);
             equippedObjectTextRight.gameObject.SetActive(false);
             equippedObjectTextUp.gameObject.SetActive(false);
             equippedObjectTextDown.gameObject.SetActive(true);
             equippedObjectText.gameObject.SetActive(false);
         } else if(direction == "up"){
-            equippedObjectTextLeft.gameObject.SetActive(true);
+            equippedObjectTextLeft.gameObject.SetActive(false);
             equippedObjectTextRight.gameObject.SetActive(false);
             equippedObjectTextUp.gameObject.SetActive(true);
             equippedObjectTextDown.gameObject.SetActive(false);

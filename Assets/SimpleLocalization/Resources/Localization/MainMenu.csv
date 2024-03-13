@@ -2,3 +2,26 @@ Key,English,Spanish
 MM.NewGame,New Game,Nueva Partida
 MM.PlayButton,Play,Jugar
 MM.Settings,Settings,Opciones
+MM.Exit,Exit,Salir
+MM.Title,Through the Looking Glass,A Traves del Espejo
+MM.AreYouSure,Are You Sure?,Estas Seguro?
+MM.AYS_No,No,No
+MM.AYS_Yes,Yes,Si
+MM.Warning,SOME SETTINGS CAN ONLY BE CHANGED IN THE MAIN MENU,ALGUNAS OPCIONES SOLO PUEDEN CAMBIARSE EN EL MENU PRINCIPAL
+MM.Audio,Audio,Audio
+MM.Volume,Music Volume,Volumen de Musica
+MM.MouseSettingOne,Mouse Horizontal Look,Vista Horizontal del Raton
+MM.MouseSettingTwo,Mouse Smoothing,Suavizado del Raton
+MM.InvertMouse,Invert Mouse,Invertir Mouse
+MM.FullScreen,Full Screen,Pantalla Completa
+MM.MotionBlur,Motion Blur,Desenfoque de Movimiento
+MM.Quality,Quality,Calidad
+MM.Low,Low,Bajo
+MM.Medium,Med,Med
+MM.High,High,Alto
+MM.Return,Return,Regresar
+MM.Sound,Sound,Sonido
+MM.Controls,Controls,Controles
+MM.PressAny,Press Any Key To Continue,Presiona Cualquier Tecla para Continuar
+MM.Loading,Loading,Cargando
+MM.Video,Video,Video
